@@ -1,0 +1,23 @@
+{
+  "name": "spotify-metadata-scraper",
+  "version": "1.0.0",
+  "description": "Apify Actor that extracts public Spotify metadata from tracks, artists, albums, playlists, podcasts, and episodes.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "start:dev": "tsx src/main.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "apify": "^3.4.2",
+    "undici": "^7.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}

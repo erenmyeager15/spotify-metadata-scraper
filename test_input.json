@@ -1,0 +1,12 @@
+{
+  "startUrls": [
+    "https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC",
+    "spotify:album:4m2880jivSbbyEGAKfITCa",
+    "https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M"
+  ],
+  "maxItems": 3,
+  "maxConcurrency": 2,
+  "proxyConfiguration": {
+    "useApifyProxy": false
+  }
+}

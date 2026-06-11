@@ -1,0 +1,48 @@
+{
+  "title": "Spotify Metadata Scraper",
+  "description": "Extract public Spotify metadata from tracks, artists, albums, playlists, shows, and episodes. No Spotify login or API key is required.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "startUrls": {
+      "title": "Spotify URLs or URIs",
+      "type": "array",
+      "description": "Spotify web URLs or spotify: URIs, one per line.",
+      "editor": "stringList",
+      "default": [
+        "https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC"
+      ],
+      "prefill": [
+        "https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC",
+        "https://open.spotify.com/album/4m2880jivSbbyEGAKfITCa",
+        "https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M"
+      ]
+    },
+    "maxItems": {
+      "title": "Maximum input items",
+      "type": "integer",
+      "description": "Maximum number of unique Spotify URLs to process.",
+      "default": 100,
+      "minimum": 1,
+      "maximum": 10000
+    },
+    "maxConcurrency": {
+      "title": "Maximum concurrency",
+      "type": "integer",
+      "description": "Number of Spotify pages fetched in parallel.",
+      "default": 5,
+      "minimum": 1,
+      "maximum": 20
+    },
+    "proxyConfiguration": {
+      "title": "Proxy configuration",
+      "type": "object",
+      "description": "Optional proxy settings. The public embed endpoint usually works without a proxy.",
+      "editor": "proxy",
+      "default": {
+        "useApifyProxy": false
+      }
+    }
+  },
+  "required": ["startUrls"]
+}

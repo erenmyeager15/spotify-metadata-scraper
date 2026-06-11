@@ -1,0 +1,66 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "sourceUrl": { "type": "string", "title": "Source URL" },
+      "url": { "type": "string", "title": "Spotify URL" },
+      "spotifyUri": { "type": "string", "title": "Spotify URI" },
+      "type": { "type": "string", "title": "Requested item type" },
+      "resolvedType": { "type": "string", "title": "Resolved embed type" },
+      "id": { "type": "string", "title": "Spotify ID" },
+      "name": { "type": "string", "title": "Name" },
+      "subtitle": { "type": ["string", "null"], "title": "Subtitle" },
+      "artists": { "type": "array", "title": "Artists", "items": { "type": "object" } },
+      "authors": { "type": "array", "title": "Authors", "items": { "type": "object" } },
+      "releaseDate": { "type": ["string", "null"], "title": "Release date" },
+      "durationMs": { "type": ["integer", "null"], "title": "Duration in milliseconds" },
+      "durationText": { "type": ["string", "null"], "title": "Formatted duration" },
+      "explicit": { "type": ["boolean", "null"], "title": "Explicit" },
+      "playable": { "type": ["boolean", "null"], "title": "Playable" },
+      "playabilityReason": { "type": ["string", "null"], "title": "Playability reason" },
+      "previewUrl": { "type": ["string", "null"], "title": "Audio preview URL" },
+      "imageUrl": { "type": ["string", "null"], "title": "Primary image URL" },
+      "images": { "type": "array", "title": "Images", "items": { "type": "object" } },
+      "trackCount": { "type": "integer", "title": "Returned track count" },
+      "tracksMayBePartial": { "type": "boolean", "title": "Track list may be partial" },
+      "tracks": { "type": "array", "title": "Nested tracks", "items": { "type": "object" } },
+      "featuredItem": { "type": ["object", "null"], "title": "Featured item" },
+      "scrapedAt": { "type": "string", "title": "Scraped timestamp" }
+    },
+    "required": ["sourceUrl", "url", "spotifyUri", "type", "resolvedType", "id", "name", "trackCount", "tracks", "scrapedAt"]
+  },
+  "views": {
+    "overview": {
+      "title": "Spotify items",
+      "transformation": {
+        "fields": [
+          "type",
+          "name",
+          "subtitle",
+          "releaseDate",
+          "durationText",
+          "trackCount",
+          "imageUrl",
+          "url",
+          "scrapedAt"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "type": { "label": "Type", "format": "text" },
+          "name": { "label": "Name", "format": "text" },
+          "subtitle": { "label": "Subtitle", "format": "text" },
+          "releaseDate": { "label": "Release date", "format": "date" },
+          "durationText": { "label": "Duration", "format": "text" },
+          "trackCount": { "label": "Tracks", "format": "number" },
+          "imageUrl": { "label": "Image", "format": "image" },
+          "url": { "label": "Spotify URL", "format": "link" },
+          "scrapedAt": { "label": "Scraped at", "format": "date" }
+        }
+      }
+    }
+  }
+}

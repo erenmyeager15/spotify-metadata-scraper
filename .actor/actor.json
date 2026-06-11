@@ -1,0 +1,30 @@
+{
+  "actorSpecification": 1,
+  "name": "spotify-metadata-scraper",
+  "title": "Spotify Metadata Scraper",
+  "description": "Extract public metadata and nested track lists from Spotify URLs without login or an API key.",
+  "version": "1.0",
+  "buildTag": "latest",
+  "dockerfile": "Dockerfile",
+  "input": "../INPUT_SCHEMA.json",
+  "storages": {
+    "dataset": "dataset_schema.json"
+  },
+  "defaultRunOptions": {
+    "build": "latest",
+    "memoryMbytes": 256,
+    "timeoutSecs": 300
+  },
+  "pricingInfo": {
+    "pricingModel": "PAY_PER_EVENT",
+    "pricingPerEvent": {
+      "actorChargeEvents": {
+        "spotify-item": {
+          "eventTitle": "Spotify item",
+          "eventDescription": "Charged for each successfully saved Spotify metadata record.",
+          "eventPriceUsd": 0.0015
+        }
+      }
+    }
+  }
+}
