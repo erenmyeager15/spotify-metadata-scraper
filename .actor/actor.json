@@ -2,11 +2,13 @@
   "actorSpecification": 1,
   "name": "spotify-metadata-scraper",
   "title": "Spotify Metadata Scraper",
-  "description": "Extract public metadata and nested track lists from Spotify URLs without login or an API key.",
+  "description": "Extract public Spotify metadata from tracks, artists, albums, playlists, shows, and episodes, including names, release dates, images, URLs, durations, nested tracks, and scraped timestamps.",
   "version": "1.0",
   "buildTag": "latest",
   "dockerfile": "Dockerfile",
   "input": "../INPUT_SCHEMA.json",
+  "readme": "../README.md",
+  "output": "./output_schema.json",
   "storages": {
     "dataset": "dataset_schema.json"
   },

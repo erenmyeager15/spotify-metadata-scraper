@@ -1,0 +1,14 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Spotify Metadata Scraper Output",
+  "description": "Structured Spotify metadata records for public tracks, artists, albums, playlists, shows, and episodes with names, subtitles, release dates, duration, track counts, images, Spotify URLs, nested track data, and scraped timestamps.",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "string",
+      "title": "Spotify metadata records",
+      "description": "Clean dataset items containing public Spotify item metadata, images, URLs, durations, track counts, nested tracks, and scraped timestamps.",
+      "template": "{{links.apiDefaultDatasetUrl}}/items"
+    }
+  }
+}

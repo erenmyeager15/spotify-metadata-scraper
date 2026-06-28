@@ -39,7 +39,7 @@ Built with Node.js 20, TypeScript, and the Apify SDK. It accepts both web URLs a
 
 ## Pricing
 
-This Actor uses Apify Pay Per Event pricing. You pay only for input items successfully saved to the dataset — nested tracks are included at no extra charge and failed inputs are not billed.
+This Actor uses Apify Pay Per Event pricing. Each unique Spotify item is saved and charged atomically; nested tracks are included at no extra charge, failed inputs are not billed, and workers stop taking new items when the user's spending limit is reached.
 
 | Event name | Price per event | 1,000 items | 10,000 items |
 | --- | ---: | ---: | ---: |
@@ -75,7 +75,15 @@ This Actor uses Apify Pay Per Event pricing. You pay only for input items succes
 4. Leave proxy off, or enable Apify Proxy if you need it.
 5. Run, then export the results as JSON, CSV, Excel, or HTML, or pull them via the Apify API.
 
-## Sample Output
+## Output dataset
+
+The Actor saves one clean metadata row per requested Spotify item. Rows include the
+requested source URL, canonical Spotify URL, item type, name, subtitle/artist or owner
+context, release date, duration, image URL, preview URL when available, nested track
+lists for albums/playlists/artists/shows, and an ISO `scrapedAt` timestamp. Export the
+dataset as JSON, CSV, Excel, or HTML, or consume it through the Apify API.
+
+### Sample output
 
 ```json
 {

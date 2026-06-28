@@ -20,22 +20,21 @@ try {
     let nextIndex = 0;
     let savedCount = 0;
     let failedCount = 0;
+    let spendingLimitReached = false;
 
     const worker = async (): Promise<void> => {
-        while (true) {
+        while (!spendingLimitReached) {
             const currentIndex = nextIndex++;
             const current = parsedInputs[currentIndex];
             if (!current) return;
 
+            let record;
             try {
                 log.info(`Scraping ${current.type}: ${current.canonicalUrl}`);
-                const record = await scrapeSpotifyItem(
+                record = await scrapeSpotifyItem(
                     current,
                     proxyConfiguration as ProxyUrlProvider | undefined,
                 );
-                await Actor.pushData(record);
-                await Actor.charge({ eventName: 'spotify-item' });
-                savedCount++;
             } catch (error) {
                 const message = error instanceof Error ? error.message : String(error);
                 failedCount++;
@@ -45,6 +44,24 @@ try {
                     error: message,
                     failedAt: new Date().toISOString(),
                 });
+                continue;
+            }
+
+            // Another worker may have reached the spending limit while this request was in flight.
+            if (spendingLimitReached) return;
+
+            const chargeResult = await Actor.pushData(record, 'spotify-item');
+            const recordWasSaved = chargeResult.chargedCount > 0 || !chargeResult.eventChargeLimitReached;
+            if (recordWasSaved) {
+                savedCount += 1;
+            }
+
+            if (chargeResult.eventChargeLimitReached) {
+                spendingLimitReached = true;
+                const message = `Stopped at the user's spending limit after ${savedCount} Spotify item(s).`;
+                await Actor.setStatusMessage(message);
+                log.warning(message);
+                return;
             }
         }
     };
@@ -53,8 +70,11 @@ try {
         Array.from({ length: Math.min(maxConcurrency, parsedInputs.length) }, () => worker()),
     );
 
-    log.info(`Finished. Saved ${savedCount} item(s); ${failedCount} failed.`);
-    if (savedCount === 0) throw new Error('No Spotify records were saved. Check the failed-urls dataset.');
+    if (!spendingLimitReached) {
+        await Actor.setStatusMessage(`Finished with ${savedCount} Spotify item(s); ${failedCount} failed.`);
+        log.info(`Finished. Saved ${savedCount} item(s); ${failedCount} failed.`);
+    }
+    if (savedCount === 0 && !spendingLimitReached) throw new Error('No Spotify records were saved. Check the failed-urls dataset.');
 } finally {
     await Actor.exit();
 }

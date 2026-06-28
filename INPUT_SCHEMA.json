@@ -22,6 +22,7 @@
       "title": "Maximum input items",
       "type": "integer",
       "description": "Maximum number of unique Spotify URLs to process.",
+      "editor": "number",
       "default": 100,
       "minimum": 1,
       "maximum": 10000
@@ -30,6 +31,7 @@
       "title": "Maximum concurrency",
       "type": "integer",
       "description": "Number of Spotify pages fetched in parallel.",
+      "editor": "number",
       "default": 5,
       "minimum": 1,
       "maximum": 20
