@@ -11,8 +11,8 @@ try {
         throw new Error('Input must contain at least one Spotify URL or URI in startUrls.');
     }
 
-    const maxItems = clampInteger(input.maxItems, 1, 10_000, 100);
-    const maxConcurrency = clampInteger(input.maxConcurrency, 1, 20, 5);
+    const maxItems = clampInteger(input.maxItems, 1, 10_000, 1);
+    const maxConcurrency = clampInteger(input.maxConcurrency, 1, 20, 1);
     const proxyConfiguration = await Actor.createProxyConfiguration(input.proxyConfiguration);
     const parsedInputs = deduplicateInputs(input.startUrls, maxItems);
     const failedDataset = await Actor.openDataset('failed-urls');

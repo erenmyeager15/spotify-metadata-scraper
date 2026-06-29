@@ -5,10 +5,15 @@
   "description": "Extract public Spotify metadata from tracks, artists, albums, playlists, shows, and episodes, including names, release dates, images, URLs, durations, nested tracks, and scraped timestamps.",
   "version": "1.0",
   "buildTag": "latest",
+  "categories": ["AUTOMATION", "DEVELOPER_TOOLS", "SOCIAL_MEDIA"],
   "dockerfile": "Dockerfile",
   "input": "../INPUT_SCHEMA.json",
   "readme": "../README.md",
   "output": "./output_schema.json",
+  "exampleRunInput": {
+    "body": "{\"startUrls\":[\"https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC\"],\"maxItems\":1,\"maxConcurrency\":1,\"proxyConfiguration\":{\"useApifyProxy\":false}}",
+    "contentType": "application/json; charset=utf-8"
+  },
   "storages": {
     "dataset": "dataset_schema.json"
   },
@@ -21,12 +26,22 @@
     "pricingModel": "PAY_PER_EVENT",
     "pricingPerEvent": {
       "actorChargeEvents": {
+        "apify-actor-start": {
+          "eventTitle": "Actor Start",
+          "eventDescription": "Charged when the Actor starts running. Number of events charged depends on Actor memory (one event per GB, minimum one event).",
+          "eventPriceUsd": 0.00005,
+          "isOneTimeEvent": true
+        },
         "spotify-item": {
           "eventTitle": "Spotify item",
           "eventDescription": "Charged for each successfully saved Spotify metadata record.",
-          "eventPriceUsd": 0.0015
+          "eventPriceUsd": 0.0015,
+          "isPrimaryEvent": true,
+          "isOneTimeEvent": false
         }
       }
     }
-  }
+  },
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 1024
 }
