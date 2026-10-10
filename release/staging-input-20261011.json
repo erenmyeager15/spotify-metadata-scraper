@@ -1,0 +1,14 @@
+{
+  "startUrls": [
+    "https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M"
+  ],
+  "maxItems": 1,
+  "maxConcurrency": 1,
+  "trackChanges": true,
+  "monitorName": "staging-spotify-20261011",
+  "onlyChanged": true,
+  "historyLimit": 5,
+  "proxyConfiguration": {
+    "useApifyProxy": false
+  }
+}

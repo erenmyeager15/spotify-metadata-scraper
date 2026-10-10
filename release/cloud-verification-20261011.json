@@ -1,0 +1,58 @@
+{
+  "actorId": "MdMjbCe6TXo7POX7u",
+  "actorSlug": "fascinating_lentil/spotify-metadata-scraper",
+  "publishedBuild": {
+    "id": "QfZAtsJutdumu5mg1",
+    "number": "1.0.9",
+    "sourceCommit": "2832870",
+    "promotedFromTag": "staging-20261011"
+  },
+  "verification": {
+    "inputFile": "release/staging-input-20261011.json",
+    "memoryMbytes": 256,
+    "proxy": "none",
+    "baseline": {
+      "runId": "FREkUPBi3yE4RCCdB",
+      "status": "SUCCEEDED",
+      "savedItems": 1,
+      "unchangedSuppressedItems": 0,
+      "trackCount": 50,
+      "tracksMayBePartial": true,
+      "observationCount": 1,
+      "chargedSpotifyItems": 1,
+      "peakMemoryBytes": 35012608,
+      "platformUsageUsd": 0.00029909081918001176,
+      "residentialProxyGb": 0
+    },
+    "matchingRepeat": {
+      "runId": "ixgfYDNgHgU4BBePw",
+      "status": "SUCCEEDED",
+      "savedItems": 0,
+      "unchangedSuppressedItems": 1,
+      "unchangedItems": 1,
+      "observationCount": 2,
+      "emitted": false,
+      "chargedSpotifyItems": 0,
+      "datasetRows": 0,
+      "peakMemoryBytes": 34705408,
+      "platformUsageUsd": 0.0000748245191110505,
+      "residentialProxyGb": 0
+    }
+  },
+  "economics": {
+    "buildUsageUsd": 0.00489488888888889,
+    "conservativeTotalIncludingListedEventsUsd": 0.006868804227179963,
+    "approvedSoftTargetUsd": 0.05,
+    "platformUsageBillingModel": "USER",
+    "apifyMarginPercentage": 20,
+    "estimatedCreatorShareOfEventRevenuePercentage": 80,
+    "note": "Owner tests are evidence, not guaranteed customer income. The conservative total adds listed event prices even though owner-run accounted event counts were zero."
+  },
+  "publication": {
+    "notice": "NONE",
+    "defaultMemoryMbytes": 256,
+    "defaultProxy": "none",
+    "pricingChanged": false,
+    "seoAndDescriptionApplied": true
+  }
+}
