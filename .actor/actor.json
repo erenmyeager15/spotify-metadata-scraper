@@ -1,8 +1,8 @@
 {
   "actorSpecification": 1,
   "name": "spotify-metadata-scraper",
-  "title": "Spotify Metadata Scraper",
-  "description": "Extract public Spotify metadata from tracks, artists, albums, playlists, shows, and episodes, including names, release dates, images, URLs, durations, nested tracks, and scraped timestamps.",
+  "title": "Spotify Playlist & Podcast Change Monitor",
+  "description": "Monitor public Spotify playlists, albums, artist top tracks, podcasts, and episodes. Detect added, removed, reordered, and newly featured content with persistent watchlists, changed-only delivery, CSV reports, and up to 50 nested tracks included in one item charge.",
   "version": "1.0",
   "buildTag": "latest",
   "categories": ["AUTOMATION", "DEVELOPER_TOOLS", "SOCIAL_MEDIA"],
@@ -11,7 +11,7 @@
   "readme": "../README.md",
   "output": "./output_schema.json",
   "exampleRunInput": {
-    "body": "{\"startUrls\":[\"https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC\"],\"maxItems\":1,\"maxConcurrency\":1,\"proxyConfiguration\":{\"useApifyProxy\":false}}",
+    "body": "{\"startUrls\":[\"https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M\"],\"maxItems\":1,\"maxConcurrency\":1,\"trackChanges\":true,\"monitorName\":\"us-playlist-watch\",\"onlyChanged\":false,\"historyLimit\":30,\"proxyConfiguration\":{\"useApifyProxy\":false}}",
     "contentType": "application/json; charset=utf-8"
   },
   "storages": {
@@ -34,7 +34,7 @@
         },
         "spotify-item": {
           "eventTitle": "Spotify item",
-          "eventDescription": "Charged for each successfully saved Spotify metadata record.",
+          "eventDescription": "Charged for each successfully saved Spotify parent record. Included nested playlist or album tracks do not create extra item charges; unchanged repeats suppressed by onlyChanged are not charged.",
           "eventPriceUsd": 0.0015,
           "isPrimaryEvent": true,
           "isOneTimeEvent": false

@@ -6,6 +6,10 @@ export interface ActorInput {
     startUrls: string[];
     maxItems?: number;
     maxConcurrency?: number;
+    trackChanges?: boolean;
+    monitorName?: string;
+    onlyChanged?: boolean;
+    historyLimit?: number;
     proxyConfiguration?: Record<string, unknown>;
 }
 
@@ -70,6 +74,49 @@ export interface SpotifyRecord {
     tracks: CompactItemRecord[];
     featuredItem: CompactItemRecord | null;
     scrapedAt: string;
+}
+
+export type ChangeStatus = 'not-tracked' | 'baseline' | 'changed' | 'unchanged';
+
+export interface TrackChangeRecord {
+    id: string | null;
+    uri: string | null;
+    url: string | null;
+    name: string;
+    position: number;
+}
+
+export interface MonitoredSpotifyRecord extends SpotifyRecord {
+    monitorName: string | null;
+    changeStatus: ChangeStatus;
+    changeDetected: boolean;
+    changeReasons: string[];
+    previousObservedAt: string | null;
+    observationCount: number;
+    previousTrackCount: number | null;
+    addedTracks: TrackChangeRecord[];
+    removedTracks: TrackChangeRecord[];
+    trackOrderChanged: boolean;
+    previousFeaturedItemId: string | null;
+    newFeaturedItemDetected: boolean;
+}
+
+export interface MonitorReportRow {
+    spotifyUri: string;
+    type: SpotifyType;
+    name: string;
+    url: string;
+    changeStatus: ChangeStatus;
+    changeDetected: boolean;
+    changeReasons: string[];
+    observationCount: number;
+    previousObservedAt: string | null;
+    observedAt: string;
+    addedTrackCount: number;
+    removedTrackCount: number;
+    trackOrderChanged: boolean;
+    newFeaturedItemDetected: boolean;
+    emitted: boolean;
 }
 
 export interface ProxyUrlProvider {

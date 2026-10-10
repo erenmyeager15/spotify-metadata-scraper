@@ -1,52 +1,61 @@
-# Spotify Metadata Scraper Promotion Notes
+# Spotify Playlist & Podcast Change Monitor — Promotion Notes
 
-Use these notes after the Store listing is live. Keep claims limited to public metadata; do not imply private account access or audio downloading.
+Use these notes after the verified Store build is live. Keep every claim limited to metadata Spotify exposes publicly.
 
 ## Positioning
 
-Extract structured metadata from public Spotify tracks, artists, albums, playlists, shows, and episodes without a Spotify login or API key.
+Monitor public Spotify playlists, albums, artist top tracks, podcast shows, episodes, and tracks. Named watchlists detect added, removed, reordered, and newly featured content; changed-only delivery avoids duplicate item charges and downstream work.
 
-## YouTube title options
+## Strong US user messages
 
-1. Spotify Metadata Scraper: Export Tracks, Artists and Playlists to CSV
-2. How to Scrape Public Spotify Metadata with Apify
-3. Spotify Playlist and Artist Data to JSON in 60 Seconds
+- Playlist teams: review additions, removals, and order changes in a CSV report.
+- Labels and music marketers: keep separate watchlists for artists, campaigns, clients, or genres.
+- Podcast researchers: detect when a show exposes a different featured episode.
+- Automation teams: send only changes to Sheets, Slack, Make, Zapier, n8n, or a webhook.
+- Cost-sensitive users: one $0.0015 parent item includes up to 50 publicly exposed nested tracks.
 
-## Short tutorial script
+## LinkedIn post draft
 
-1. Open Spotify Metadata Scraper on Apify.
-2. Paste a Spotify track, artist, album, playlist, show, or episode URL.
-3. Keep `maxItems` at 1 for the first run and leave proxy off.
-4. Run the Actor.
-5. Show the output table with name, item type, duration, image, URL, and track count.
-6. Open the JSON view to show nested tracks and artist fields.
-7. Export the dataset as CSV or JSON.
-8. Close with: "Use schedules, the API, or Apify integrations to automate repeated metadata collection."
+I updated my Spotify Actor on Apify for recurring playlist and podcast monitoring.
 
-## Social post
+It now keeps named watchlists and reports playlist track additions, removals, order changes, and newly featured podcast episodes. You can schedule the same input, export a JSON or CSV change report, and enable changed-only delivery so unchanged repeats do not create another item charge.
 
-Need clean metadata from public Spotify URLs?
+The Actor uses 256 MB, needs no Spotify login or API key, and does not require a proxy by default. A playlist or album is billed as one parent item, with up to 50 publicly exposed nested tracks included.
 
-Spotify Metadata Scraper accepts tracks, artists, albums, playlists, podcast shows, and episodes. It returns canonical Spotify IDs and URLs, names, artists or authors, dates, durations, images, playability fields, preview links, and nested track lists where Spotify exposes them.
+The scope is deliberately honest: it monitors public embed metadata, not private playlists, listening history, full play counts, or complete discographies.
 
-No Spotify login or API key is required. Start with one URL, then export to JSON, CSV, Excel, or your workflow through the Apify API.
+Actor: https://apify.com/fascinating_lentil/spotify-metadata-scraper
+
+#Apify #Spotify #MusicData #PodcastAnalytics #WebScraping #Automation
+
+## Tutorial outline
+
+1. Open Spotify Playlist & Podcast Change Monitor on Apify.
+2. Paste one public playlist or podcast show URL.
+3. Enable `trackChanges` and choose a stable `monitorName`.
+4. Run once to create the baseline.
+5. Schedule the same input daily or weekly.
+6. Open `MONITORING-REPORT` or `MONITORING-REPORT.csv`.
+7. Enable `onlyChanged` after confirming the baseline.
+8. Connect the output to an Apify integration or webhook.
 
 ## SEO keywords
 
-- spotify metadata scraper
+- spotify playlist monitor
+- spotify playlist change tracker
+- spotify podcast monitor
 - spotify playlist scraper
-- spotify artist data scraper
-- spotify track metadata API
-- export spotify playlist to csv
-- scrape spotify album tracks
-- spotify podcast metadata
+- export spotify playlist changes csv
+- spotify track additions removals
+- spotify metadata scraper api
 - apify spotify scraper
 
 ## Claim guardrails
 
 - Say "public Spotify metadata," not "all Spotify data."
+- Say "up to 50 publicly exposed nested tracks," not "complete playlist."
 - Do not claim access to private playlists, account data, streams, followers, or listening history.
-- Do not claim that audio preview URLs are always available.
+- Do not claim monthly listeners or exact play counts.
+- Do not claim preview URLs are always available.
 - Do not imply that the Actor downloads full audio.
-- Mention the 50-track public playlist embed limit.
 - State that the tool is independent and not affiliated with Spotify.

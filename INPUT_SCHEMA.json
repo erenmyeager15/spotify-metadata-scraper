@@ -1,6 +1,6 @@
 {
-  "title": "Spotify Metadata Scraper",
-  "description": "Extract public Spotify metadata from tracks, artists, albums, playlists, shows, and episodes. No Spotify login or API key is required.",
+  "title": "Spotify Playlist & Podcast Monitor",
+  "description": "Extract public Spotify metadata and monitor playlists, albums, artist top tracks, shows, and episodes for changes. No Spotify login, API key, or default proxy is required.",
   "type": "object",
   "schemaVersion": 1,
   "properties": {
@@ -35,6 +35,40 @@
       "default": 1,
       "minimum": 1,
       "maximum": 20
+    },
+    "trackChanges": {
+      "title": "Track changes across runs",
+      "type": "boolean",
+      "description": "Save bounded history for each Spotify item and compare it with the previous observation. Adds baseline/changed/unchanged status, playlist track additions/removals/reorders, and featured podcast episode changes.",
+      "editor": "checkbox",
+      "default": false,
+      "sectionCaption": "Recurring monitoring",
+      "sectionDescription": "Use the same monitor name on scheduled runs to build an isolated watchlist history and downloadable change report."
+    },
+    "monitorName": {
+      "title": "Monitor name",
+      "type": "string",
+      "description": "Stable watchlist name used to isolate history, for example us-playlist-watch or podcast-competitors.",
+      "editor": "textfield",
+      "default": "default",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "onlyChanged": {
+      "title": "Return only baselines and changes",
+      "type": "boolean",
+      "description": "When change tracking is enabled, suppress unchanged repeat items from the dataset and spotify-item charge. The first observation is always returned as a baseline.",
+      "editor": "checkbox",
+      "default": false
+    },
+    "historyLimit": {
+      "title": "Observations kept per item",
+      "type": "integer",
+      "description": "Bounded number of recent observations retained for each Spotify item in this monitor.",
+      "editor": "number",
+      "default": 30,
+      "minimum": 2,
+      "maximum": 100
     },
     "proxyConfiguration": {
       "title": "Proxy configuration",

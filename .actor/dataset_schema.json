@@ -27,6 +27,18 @@
       "tracksMayBePartial": { "type": "boolean", "title": "Track list may be partial" },
       "tracks": { "type": "array", "title": "Nested tracks", "items": { "type": "object" } },
       "featuredItem": { "type": ["object", "null"], "title": "Featured item" },
+      "monitorName": { "type": ["string", "null"], "title": "Monitor name" },
+      "changeStatus": { "type": "string", "title": "Change status" },
+      "changeDetected": { "type": "boolean", "title": "Change detected" },
+      "changeReasons": { "type": "array", "title": "Change reasons", "items": { "type": "string" } },
+      "previousObservedAt": { "type": ["string", "null"], "title": "Previous observation" },
+      "observationCount": { "type": "integer", "title": "Observation count" },
+      "previousTrackCount": { "type": ["integer", "null"], "title": "Previous track count" },
+      "addedTracks": { "type": "array", "title": "Added tracks", "items": { "type": "object" } },
+      "removedTracks": { "type": "array", "title": "Removed tracks", "items": { "type": "object" } },
+      "trackOrderChanged": { "type": "boolean", "title": "Track order changed" },
+      "previousFeaturedItemId": { "type": ["string", "null"], "title": "Previous featured item ID" },
+      "newFeaturedItemDetected": { "type": "boolean", "title": "New featured item detected" },
       "scrapedAt": { "type": "string", "title": "Scraped timestamp" }
     },
     "required": ["sourceUrl", "url", "spotifyUri", "type", "resolvedType", "id", "name", "trackCount", "tracks", "scrapedAt"]
@@ -42,6 +54,9 @@
           "releaseDate",
           "durationText",
           "trackCount",
+          "changeStatus",
+          "changeReasons",
+          "observationCount",
           "imageUrl",
           "url",
           "scrapedAt"
@@ -56,6 +71,9 @@
           "releaseDate": { "label": "Release date", "format": "date" },
           "durationText": { "label": "Duration", "format": "text" },
           "trackCount": { "label": "Tracks", "format": "number" },
+          "changeStatus": { "label": "Change", "format": "text" },
+          "changeReasons": { "label": "Reasons", "format": "array" },
+          "observationCount": { "label": "Observations", "format": "number" },
           "imageUrl": { "label": "Image", "format": "image" },
           "url": { "label": "Spotify URL", "format": "link" },
           "scrapedAt": { "label": "Scraped at", "format": "date" }

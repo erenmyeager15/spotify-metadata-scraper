@@ -1,14 +1,26 @@
 {
   "actorOutputSchemaVersion": 1,
-  "title": "Spotify Metadata Scraper Output",
-  "description": "Structured Spotify metadata records for public tracks, artists, albums, playlists, shows, and episodes with names, subtitles, release dates, duration, track counts, images, Spotify URLs, nested track data, and scraped timestamps.",
+  "title": "Spotify Playlist & Podcast Monitor Output",
+  "description": "Public Spotify metadata plus persistent watchlist comparisons, changed-only delivery, and downloadable JSON/CSV monitoring reports.",
   "type": "object",
   "properties": {
     "results": {
       "type": "string",
       "title": "Spotify metadata records",
-      "description": "Clean dataset items containing public Spotify item metadata, images, URLs, durations, track counts, nested tracks, and scraped timestamps.",
+      "description": "Clean parent-item records containing public Spotify metadata, included nested tracks, and optional change fields. Nested tracks are included in the parent item charge.",
       "template": "{{links.apiDefaultDatasetUrl}}/items"
+    },
+    "monitoringReport": {
+      "type": "string",
+      "title": "Monitoring report (JSON)",
+      "description": "Run totals and per-item baseline, changed, unchanged, track-add/remove/reorder, and new-featured-item results.",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/MONITORING-REPORT"
+    },
+    "monitoringCsv": {
+      "type": "string",
+      "title": "Monitoring report (CSV)",
+      "description": "Spreadsheet-ready change report for scheduled playlist, artist, album, and podcast watchlists.",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/MONITORING-REPORT.csv"
     }
   }
 }

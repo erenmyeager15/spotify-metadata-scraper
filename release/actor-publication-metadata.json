@@ -1,0 +1,28 @@
+{
+  "title": "Spotify Playlist & Podcast Change Monitor",
+  "description": "Monitor public Spotify playlists, albums, artist top tracks, podcasts, and episodes. Detect additions, removals, reorders, and newly featured content with named watchlists, changed-only delivery, CSV reports, and up to 50 nested tracks included in one parent charge.",
+  "seoTitle": "Spotify Playlist Monitor & Podcast Change Tracker",
+  "seoDescription": "Track Spotify playlist additions, removals, order changes, artist top tracks, and newly featured podcast episodes. No login or API key; JSON and CSV reports included.",
+  "categories": [
+    "AUTOMATION",
+    "DEVELOPER_TOOLS",
+    "SOCIAL_MEDIA"
+  ],
+  "pricing": {
+    "model": "PAY_PER_EVENT",
+    "actorStartUsd": 0.00005,
+    "spotifyItemUsd": 0.0015,
+    "note": "One emitted parent item is charged. Public nested tracks included in that parent are not separate item events; unchanged repeats suppressed by onlyChanged are not charged."
+  },
+  "defaultMemoryMbytes": 256,
+  "proxyDefault": "none",
+  "verifiedLocally": {
+    "testsPassed": 5,
+    "baselineSavedItems": 1,
+    "matchingRepeatSavedItems": 0,
+    "matchingRepeatSuppressedItems": 1,
+    "matchingRepeatObservationCount": 2,
+    "productionVulnerabilities": 0,
+    "schemaValidation": "passed"
+  }
+}

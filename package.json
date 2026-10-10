@@ -1,10 +1,13 @@
 {
   "name": "spotify-metadata-scraper",
   "version": "1.0.0",
-  "description": "Extract public Spotify metadata from tracks, artists, albums, playlists, podcast shows, and episodes.",
+  "description": "Monitor public Spotify playlists, albums, artist top tracks, podcast shows, episodes, and metadata changes.",
   "type": "module",
   "scripts": {
     "build": "tsc",
+    "test": "npm run build && node --test dist/*.test.js",
+    "lint": "tsc --noEmit",
+    "audit:prod": "npm audit --omit=dev --audit-level=high",
     "start": "node dist/main.js",
     "start:dev": "tsx src/main.ts"
   },
@@ -19,5 +22,8 @@
     "@types/node": "^24.5.2",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
+  },
+  "overrides": {
+    "basic-ftp": "6.2.3"
   }
 }

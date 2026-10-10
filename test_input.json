@@ -1,11 +1,13 @@
 {
   "startUrls": [
-    "https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC",
-    "spotify:album:4m2880jivSbbyEGAKfITCa",
     "https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M"
   ],
-  "maxItems": 3,
-  "maxConcurrency": 2,
+  "maxItems": 1,
+  "maxConcurrency": 1,
+  "trackChanges": true,
+  "monitorName": "local-spotify-upgrade-20261011",
+  "onlyChanged": true,
+  "historyLimit": 5,
   "proxyConfiguration": {
     "useApifyProxy": false
   }
